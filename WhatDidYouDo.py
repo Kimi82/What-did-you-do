@@ -1,9 +1,16 @@
 from datetime import datetime
 import time
+import winsound
+
+
+
+
+
 def Today():
     import datetime
     now = datetime.datetime.now()
     today = now.date()
+
     pli = open('Raport.txt', 'a')
     pli.write(" "+str(today))
     pli.write("\n")
@@ -12,8 +19,6 @@ def Today():
 
 def TakeTime():
     now = datetime.now()
-    if len(str(now.minute))==0:
-        now.minute="0"+now.minute
     now=str(now.hour) +":"+ str(now.minute)
     return  now
 
@@ -31,9 +36,9 @@ def Raport(think, now):
 
 Today()
 
+
 while(True):
-    time.sleep(2)
+    winsound.PlaySound('pik.mp3', winsound.SND_FILENAME)
     Raport(TakeTime(), WhatDid())
-
-
+    time.sleep(5)
 
