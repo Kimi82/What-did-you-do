@@ -1,20 +1,20 @@
 from datetime import datetime
 import time
 import winsound
+import getpass
 
-
-
+username = getpass.getuser()
 
 
 def Today():
     import datetime
     now = datetime.datetime.now()
     today = now.date()
-
-    pli = open('Raport.txt', 'a')
-    pli.write(" "+str(today))
-    pli.write("\n")
-    pli.close()
+    miejsce = 'C:/Users/'+username+'/Desktop/Raport.txt'
+    plik = open(miejsce, 'a')
+    plik.write(" "+str(today))
+    plik.write("\n")
+    plik.close()
 
 
 def TakeTime():
@@ -27,11 +27,12 @@ def WhatDid():
     return  think
 
 def Raport(think, now):
-    pli = open('Raport.txt', 'a')
-    pli.write( '\t' +str(think))
-    pli.write(" || "+now)
-    pli.write("\n")
-    pli.close()
+    miejsce = 'C:/Users/' + username + '/Desktop/Raport.txt'
+    plik = open(miejsce, 'a')
+    plik.write( '\t' +str(think))
+    plik.write(" || "+now)
+    plik.write("\n")
+    plik.close()
 
 
 Today()
@@ -40,5 +41,4 @@ Today()
 while(True):
     winsound.PlaySound('pik.mp3', winsound.SND_FILENAME)
     Raport(TakeTime(), WhatDid())
-    time.sleep(5)
-
+    time.sleep(1800)
